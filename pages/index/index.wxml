@@ -48,10 +48,13 @@
         </view>
         <view class="bottom" style="height: 35rpx"></view>
       </scroll-view>
-      <navigator class="addNewEve" hover-class="none" url="../addNewEvent/addNewEvent" open-type="navigate" >
-        <image class="icon" src="../../imgs/index/addNewEve.png"></image>
-        <text bindtap="addNewEvent">快速新建事项</text>
-      </navigator>
+      <view class="addNewEve">
+        <navigator url="../addNewEvent/addNewEvent" class="naviToCreateP" style="color:rgba(135, 135, 135, 1)">
+        <image class="img" src="../../imgs/icon/add.png"></image>
+        <view>快速新建事项</view>
+        </navigator>
+      </view>
+        
     </view>
 
     <!-- 底部菜单栏 -->

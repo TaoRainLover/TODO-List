@@ -2,7 +2,8 @@
 function serveDateToLocalDate (serveD){
   let dateDue = Date.parse(serveD);
   var newDate = new Date(dateDue-28800000);  
-  var localD = newDate.toLocaleDateString();
+  // var localD = newDate.toLocaleDateString();
+  var localD = newDate.getFullYear()+'/'+(newDate.getMonth()+1)+'/'+newDate.getDate();
   return localD;
 }
 

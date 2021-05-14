@@ -4,7 +4,7 @@
 
 <view class="container" style="height: {{pageH}}">
   <view class="contentContainer">
-    <view class="time">2021/4/15</view>
+    <view class="time">{{time}}</view>
     <view class="title">
       <input type="text" confirm-type="done" bindconfirm='submit' value="{{title}}" bindinput="getTitle" placeholder="输入标题"></input>
     </view>

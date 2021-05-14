@@ -30,9 +30,10 @@ Page({
   // 写下新内容按钮--跳转
   addNewIdea: function(){
     console.log('我将跳转要添加页！');
-
+    let today =new Date();
+    let time = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
     wx.navigateTo({
-      url: '../idea_content/idea_content?className='+this.data.pageTitle+'&id=0&title=&content=&type=add',
+      url: '../idea_content/idea_content?className='+this.data.pageTitle+'&id=0&title=&content=&type=add&time='+time,
     })
     
   },
@@ -53,6 +54,7 @@ Page({
     let id = this.data.list[index]._id;
     let title = this.data.list[index].title;
     let content = this.data.list[index].content;
+    let time = this.data.list[index].time;
     for(let i = 0; i < this.data.list.length; i++){
       if(id == this.data.list[i]._id){
         title = this.data.list[i].title;
@@ -63,7 +65,7 @@ Page({
     console.log('你将携带如下信息跳转', id, title, content);
     // 跳转到内容页
     wx.navigateTo({
-      url: '../idea_content/idea_content?className='+this.data.pageTitle+'&id='+id+'&title='+title+'&content='+content+'&type=update',
+      url: '../idea_content/idea_content?className='+this.data.pageTitle+'&id='+id+'&title='+title+'&content='+content+'&type=update&time='+time,
     })
   },
 

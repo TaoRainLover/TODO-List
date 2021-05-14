@@ -286,7 +286,6 @@ Page({
     this.setData({
       pageH: app.globalData.pageHeight,
       viewOpeH: 112+app.globalData.navBarHeight*2 + 'rpx',
-
       title: options.name,
       type: options.type,
     })

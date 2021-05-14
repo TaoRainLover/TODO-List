@@ -11,6 +11,7 @@ Page({
     className: '',
     title: '',
     content: '',
+    time: '',
     id: '',
     type: '',
     
@@ -93,6 +94,7 @@ Page({
       content: e.content,
       type: e.type,
       id: e.id,
+      time: e.time,
     })
     // 设置页面高度
     this.setData({

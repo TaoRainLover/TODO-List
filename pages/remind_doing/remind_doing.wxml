@@ -32,5 +32,7 @@
     <view class="rename" bindtap="rename">重命名</view>
     <view class="delete" bindtap='delete'>删除</view>
   </view>
-  
+  <!-- 底部菜单栏 -->
+  <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" >
+  </mp-actionSheet>
 </view>

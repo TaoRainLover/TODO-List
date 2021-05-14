@@ -57,17 +57,29 @@
   box-sizing: border-box;
   margin-bottom: 40rpx;
   }
-/* 今日创建信息 */
-.eventToday{
-  width: 638rpx;
+
+
+/* 快速跳转到新建 */
+.addNewEve{
+  display: flex;
+  justify-content: center;
+}
+.naviToCreateP{
+  width: 594rpx;
   height: 70rpx;
   background: #FAFAFE;
   box-shadow: 0px 0px 30px rgba(154, 154, 154, 0.16);
   border-radius: 36rpx;
   font-size: 32rpx;
-  line-height: 70rpx;
-  text-align: center;
-  margin-bottom: 38rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20rpx;
+}
+.naviToCreateP .img{
+  width: 56rpx;
+  height: 56rpx;
 }
 
 /* 统计页2，登录但还未创建事项 */

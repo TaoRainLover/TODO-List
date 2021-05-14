@@ -164,14 +164,26 @@
 .listCon .liCon .num{
   color: #8E8E8E;
 }
+/* 快速跳转 */
 .addNewEve{
-  height: 10%;
+  /* height: 40%; */
+  display: flex;
+  justify-content: center;
+}
+.naviToCreateP{
+  width: 594rpx;
+  height: 70rpx;
+  background: #FAFAFE;
+  box-shadow: 0px 0px 30px rgba(154, 154, 154, 0.16);
+  border-radius: 36rpx;
   font-size: 32rpx;
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: #878787;
+  align-items: center;
+  position: fixed;
+  bottom: 20rpx;
 }
-.addNewEve image{
-  margin-right: 14rpx;
+.naviToCreateP .img{
+  width: 56rpx;
+  height: 56rpx;
 }
