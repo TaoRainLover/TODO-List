@@ -1,0 +1,29 @@
+/* pages/testBar/testBar.wxss */
+.nav-bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: #fff;
+  /* background: cadetblue; */
+  background: #fff;
+}
+
+.nav-bar .barCon {
+  /* width: 60%; */
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  
+  position: absolute;
+  
+  /* background: rgb(204, 85, 85); */
+  padding-left: 14px;
+  display: flex;
+  align-items: center;
+}
+
+
+.nav-bar .barCon .cancel{
+  height: 44rpx;
+  /* background: brown; */
+  font-size: 34rpx;
+}

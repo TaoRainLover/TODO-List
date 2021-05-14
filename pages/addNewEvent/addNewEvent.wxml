@@ -1,0 +1,18 @@
+<!--pages/addNewEvent/addNewEvent.wxml-->
+<navigation-cancel Title="取消"></navigation-cancel>
+<view class="container">
+  <view class="titleCon">
+    <text class="title" >快速创建一个事项</text>
+    <text class="time">{{currentTime}}</text>
+  </view>
+  <view class="title2">输入内容</view>
+  <input class="eventContent" name='eventContent' bindinput="getInputInfo" focus="{true}" type="text" maxlength="30" placeholder="最多30字符" placeholder-style="color:rgba(141, 141, 141, 1)" />
+  <view class="title3">选择所属列表</view>
+<!-- 动态渲染 -->
+<view class="eventType">
+    
+    <view class="type"  wx:for="{{typeList}}" wx:key = 'id' id='{{index}}' bindtap='getEType' style="{{item.checkStyle}}" >{{item.listName}}</view>
+  </view>
+
+</view>
+<view class="submitBtn" bindtap="submitData" style="background: {{buttonBg}}; color: {{buttonCr}}">完成创建</view>

@@ -1,0 +1,35 @@
+/* pages/testBar/testBar.wxss */
+.nav-bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: #fff;
+  /* background: cadetblue; */
+  background: #fff;
+  z-index: 999;
+}
+
+.nav-bar .barCon {
+  /* width: 60%; */
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  
+  position: absolute;
+  
+  /* background: rgb(204, 85, 85); */
+  padding-left: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.backIcon{
+  height: 44rpx;
+  width: 44rpx;
+  margin-right: 10rpx;
+}
+.nav-bar .barCon .cancel{
+  /* height: 44rpx; */
+  /* background: brown; */
+  font-size: 44rpx;
+  
+}

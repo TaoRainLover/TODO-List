@@ -1,0 +1,61 @@
+<!-- 自定义导航条组件 -->
+<navigation-bar Title="效率"></navigation-bar>
+<!-- 内容区 -->
+<view class="container" >
+  <view class="contentCon">
+
+    <view class="progressCon">
+      <view class="title">
+        <text>今日</text>
+        <text>事项</text>
+      </view>
+      <!-- 圆形进度统计 -->
+      <view class="circleProgress">
+        <view class="innerCon"></view>
+        <view class="outsideCon">
+          <view class="rightCon circle">
+            <view class="right" style="transform: rotate({{todo_today.deg1}}deg);"></view>
+          </view>
+          <view class="leftCon circle">
+            <view class="left" style="transform: rotate({{todo_today.deg2}}deg);"> </view>
+          </view>
+        </view>
+        <!-- 今日待办统计 -->
+        <view class="num" bindtap="navigateTodo" style="font-size: {{todo_today.fontsize}}">
+          <text class="finished">{{todo_today.num_finished}}</text>
+          <text>/</text>
+          <text class="total">{{todo_today.num_total}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 导航列表 -->
+    <view class="naviLiContainer">
+      <scroll-view class="classList" scroll-y="true">
+        <view class="listCon">
+          <!-- 导航-创建列表 -->
+          <navigator class="addNewClass"  hover-class="none" url="../createNewClass/createNewClass" open-type="navigate">
+            <image class="icon" src='../../imgs/addNewClass.png'></image>
+            <text>创建列表</text>
+          </navigator>
+          <view class="classLi">
+            <view class="liCon" wx:for="{{userLists}}" wx:key="id" id="{{index}}" catchtap="switchToContent" catchlongpress="longPressItem">
+              <view class="className" id="{{index}}" catchtap="switchToContent" style="color: {{item.listColor}}">{{item.listName}}</view>
+              <view class="num" id="{{index}}" >{{item.numItems}}</view>
+            </view>
+            
+          </view>
+        </view>
+        <view class="bottom" style="height: 35rpx"></view>
+      </scroll-view>
+      <navigator class="addNewEve" hover-class="none" url="../addNewEvent/addNewEvent" open-type="navigate" >
+        <image class="icon" src="../../imgs/index/addNewEve.png"></image>
+        <text bindtap="addNewEvent">快速新建事项</text>
+      </navigator>
+    </view>
+
+    <!-- 底部菜单栏 -->
+    <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" >
+    </mp-actionSheet>
+  </view>
+</view>

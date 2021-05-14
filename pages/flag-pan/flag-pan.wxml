@@ -1,0 +1,33 @@
+<!--pages/flag/flag.wxml-->
+
+<navigation-back Title='Falg-pan'></navigation-back>
+
+
+<view class="container" style="padding-top: 110rpx">
+  <view class="contentContainer">
+    <view class="title">
+      <view class="attribution">
+        <view class="timeline">时间线<text>(正序)</text></view>
+      </view>
+      <image class="dot" src="../../imgs/icon/复选@3x.png" mode="aspectFit"></image>
+    </view>
+    <scroll-view class="tdlist" scroll-y="true">
+      <view class="add">
+        <text class="time">今天</text>
+        <view class="addcon">
+          <input class="addinput" type="text"  placeholder="立一个flag！" placeholder-style="color: grey" value='{{content}}' bindinput="getInputInfo"/>
+          <image src="../../imgs/icon/add@3x.png" mode="aspectFit" lazy-load='true'></image>
+        </view>
+      </view>
+      <view class="li" wx:for="{{tdlist}}" wx:key="id">
+        <text class="time">{{item.time}}</text>
+        <view class="item" wx:for="{{li}}" wx:key="id">
+          <input class="input{{item.status}}" value="{{item.content}}"></input>
+          <image src="../../imgs/icon/flag{{item.status}}.png" mode="aspectFit" lazy-load="true"></image>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+

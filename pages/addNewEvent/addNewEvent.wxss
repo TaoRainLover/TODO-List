@@ -1,0 +1,72 @@
+/* pages/addNewEvent/addNewEvent.wxss */
+.container{
+  height: 734rpx;
+  width: 722rpx;
+  margin: 0 auto;
+  background: rgba(247, 246, 254,  0.56);
+  border-radius: 48rpx;
+  font-size: 40rpx;
+  box-sizing: border-box;
+  padding: 38rpx 22rpx 0rpx 22rpx;
+}
+.titleCon{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 26rpx;
+}
+.titleCon .title{
+  font-size: 48rpx;
+  font-weight: bolder;
+}
+.titleCon .time{
+  font-size: 32rpx;
+  color: rgba(141, 141, 141, 1);
+
+}
+
+.title2, .title3{
+  margin-bottom: 36rpx;
+}
+.eventContent{
+  width: 682rpx;
+  height: 82rpx;
+  background: #FFFFFF;
+  border-radius: 28rpx;
+  box-sizing: border-box;
+  padding-left: 26rpx;
+  margin-bottom: 36rpx;
+}
+.eventType{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+
+}
+.eventType .type{
+  padding: 14rpx 26rpx;
+  background: white;
+  border-radius: 28rpx;
+  color: rgba(141, 141, 141, 1);
+  /* margin-right: 37rpx; */
+  margin-bottom: 30rpx;
+  
+}
+
+
+/* 完成创建按钮 */
+.submitBtn{
+  /* font-size: 40rpx; */
+  width: 544rpx;
+  height: 82rpx;
+  margin: 0 auto;
+  margin-top: 44rpx;
+  font-size: 40rpx;
+  font-weight: bolder;
+  line-height: 82rpx;
+  text-align: center;
+  background: rgba(0, 111, 255, 1);
+  color: white;
+  opacity: 1;
+  border-radius: 28rpx;
+}

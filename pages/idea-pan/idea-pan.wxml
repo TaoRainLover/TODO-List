@@ -1,0 +1,40 @@
+<!--pages/idea/idea.wxml-->
+<navigation-back Title="{{pageTitle}}"></navigation-back>
+
+<view class="container" style="height: {{pageH}}">
+  <view class="contentContainer">
+    <!-- 顶部搜索条 -->
+    <view class="title">
+      <view class="search">
+        <image class="icon" src="../../imgs/icon/search.png"></image>
+        <view class="text"><input type="text"  placeholder="搜索" placeholder-style="color: grey" /></view>
+      </view>
+      <image class="dot" src="../../imgs/icon/dots.png" mode="aspectFit" bindtap="clickOperation"></image>
+    </view>
+    <!-- 列表滑动区域 -->
+    <scroll-view class="list" scroll-y="true">
+      <view class="li" catchlongpress="longPressItem" bindtap="navigationToContent" wx:for="{{list}}" wx:key="id" id="{{index}}">
+        <view class="heading">{{item.title}}</view>
+        <view class="detail" >
+          <view class="essentails" >{{item.content}}</view>
+          <text class="time">{{item.time}}</text>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 添加按钮 -->
+    <view class="addCon">
+      <view class="add" bindtouchstart="buttonTouchStyle" bindtap="addNewIdea" bindtouchend="buttonTouchedStyle" style="{{buttonClickS}}">
+        写下新内容
+      </view>
+    </view>
+  </view>
+  <!-- 操作区域 -->
+  <view class="operationView" style="top: {{viewOpeH}}"  hidden="{{noOperation}}">
+    <view class="rename" bindtap="rename">重命名</view>
+    <view class="delete" bindtap='delete'>删除</view>
+  </view>
+
+   <!-- 底部菜单栏 -->
+   <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" >
+</mp-actionSheet>
+</view>

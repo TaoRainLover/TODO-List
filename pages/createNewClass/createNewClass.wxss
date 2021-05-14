@@ -1,0 +1,105 @@
+/* pages/createNewClass/createNewClass.wxss */
+
+.ctCon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.classForm{
+  width: 722rpx;
+  height: 1144rpx;
+  background: rgba(247, 246, 254, 0.56);
+  border-radius: 24px;
+  box-sizing: border-box;
+  padding: 54rpx 22rpx 0rpx 22rpx;
+}
+.classForm .title{
+  height: 66rpx;
+  font-size: 48rpx;
+  margin-bottom: 26rpx;
+  font-weight: bolder;
+}
+.classForm .headline{
+  height: 56rpx;
+  font-size: 40rpx;
+  margin-bottom: 36rpx;
+}
+.classForm input{
+  width: 682rpx;
+  height: 82rpx;
+  color: rgba(116, 65, 255, 1);
+  font-size: 40rpx;
+  background: #FFFFFF;
+  border-radius: 28rpx;
+  box-sizing: border-box;
+  padding-left: 26rpx;
+  margin-bottom: 36rpx;
+}
+.classForm .colorTitle{
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 40rpx;
+  margin-bottom: 36rpx;
+
+}
+.classForm .colorBox{
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 48rpx;
+}
+.classForm .colorBox .color{
+  height: 82rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.classForm .colorBox .color view{
+  width: 62rpx;
+  height: 62rpx;
+  /* border: 10rpx solid rgb(197, 30, 30); */
+  border-radius: 50%;
+  
+}
+
+
+
+image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.ctCon .contentTitle{
+  height: 56rpx;
+  font-size: 40rpx;
+  margin-bottom: 70rpx;
+}
+.contentType{
+  height: 244rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.contentType .box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contentType .icon{
+  height: 172rpx;
+  width: 216rpx;
+  margin-bottom: 16rpx;
+}
+.contentType .des{
+  height: 56rpx;
+  font-size: 40rpx;
+}
+
+.ctCon .submitBtn{
+  /* width: 544rpx; */
+  /* width: 682rpx; */
+
+  height: 82rpx;
+  border-radius: 28rpx;
+  margin-top: 22rpx;
+  margin-bottom: 40rpx;
+}

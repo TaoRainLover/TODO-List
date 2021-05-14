@@ -1,0 +1,4 @@
+{
+  "backgroundColor": "#fbfafe",
+  "usingComponents": {"navigation-back": "../../components/navigation-back/navigation-back"}
+}

@@ -1,0 +1,69 @@
+page{
+  font-family: "苹方-简";
+
+}
+.container{
+  background: rgba(247, 246, 254, 0.56);
+  border-radius: 24px 24px 0px 0px;
+  box-sizing: border-box;
+  padding: 0 34rpx;
+}
+
+.title{
+  
+  height: 66rpx;
+  font-size: 48rpx;
+  padding-top: 38rpx;
+  padding-bottom: 38rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.title .current{
+  margin-right: 40rpx;
+}
+.title .finished{
+  /* background: ; */
+  color:rgba(213, 213, 213, 1);
+}
+.title .dot{
+  width: 44rpx;
+  height: 44rpx;
+}
+.RMList .li{
+  height: 88rpx;
+  font-size: 40rpx;
+  line-height: 88rpx;
+  border-bottom: 2rpx solid white;
+}
+.RMList .li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.RMList .li .status{
+  width: 44rpx;
+  height: 44rpx;
+  background: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  
+  border-radius: 22rpx;
+
+}
+
+.add{
+  height: 88rpx;
+  font-size: 40rpx;
+  line-height: 88rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+/* .add input {
+} */
+.add image{
+  height: 50rpx;
+  width: 50rpx;
+}

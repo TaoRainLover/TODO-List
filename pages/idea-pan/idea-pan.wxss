@@ -1,0 +1,137 @@
+/* pages/idea/idea.wxss */
+page{
+  /* height: 100%; */
+  width: 100%;
+  font-family: "苹方-简";
+  
+  /* background: skyblue; */
+}
+.container{
+  background: rgba(247, 246, 254, 0.56);
+  border-radius: 24px 24px 0px 0px;
+  box-sizing: border-box;
+  bottom: 0;
+
+}
+.contentContainer{
+  height: 100%;
+}
+.list{
+  height: 85%;
+}
+.title{
+  padding: 0 34rpx;
+  height: 66rpx;
+  font-size: 40rpx;
+  padding-top: 38rpx;
+  padding-bottom: 38rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.search{
+  display: flex;
+  width: 600rpx;
+  height: 76rpx;
+  background: white;
+  border-radius: 38rpx;
+}
+.text{
+  height: 76rpx;
+  font-size: 40rpx;
+  line-height: 88rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 12rpx;
+}
+.icon{
+  margin-left: 22rpx;
+  margin-top: 22rpx;
+  width: 38rpx;
+  height: 36rpx;
+}
+.title .dot{
+  width: 56rpx;
+  height: 74rpx;
+}
+.li{
+  height: 136rpx;
+  box-sizing: border-box;
+  /* line-height: 88rpx; */
+  border-bottom: 2rpx solid white;
+  line-height: 88rpx;
+
+  padding: 0 34rpx;
+
+}
+.heading{
+  font-size: 40rpx;
+  /* height: 50rpx; */
+  font-weight: bolder;
+  /* margin-top: 4rpx; */
+}
+.detail{
+  font-size: 32rpx;
+  color:  rgba(141, 141, 141, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  /* height: 78rpx; */
+  top: -28rpx;
+}
+
+.essentails{
+  width: 400rpx;
+  height: 88rpx;
+  overflow: hidden;
+}
+/* 底部添加按钮 */
+.addCon{
+  
+  height: 80rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 10%;
+  display: flex;
+  justify-content: center;
+}
+.addCon .add{
+  
+  font-size: 32rpx;
+  width: 324rpx;
+  height: 100%;
+  background: white;
+  box-shadow: 0px 0rpx 60rpx rgba(65, 65, 65, 0.16);
+  border: 2rpx solid rgb(242, 242, 242);
+  opacity: 1;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* 操作区域 */
+.operationView{
+  width: 248rpx;
+  height: 112rpx;
+  background: rgb(255, 255, 255);
+  position: fixed;
+  top: 102rpx;
+  right: 36rpx;
+  border-radius: 14rpx;
+  box-shadow: 0px 0px 99px #C6C6C6;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  z-index: 999;
+}
+.operationView view{
+  height: 56rpx;
+  padding-left: 14rpx;
+  display: flex;
+  align-items: center;
+}
+.operationView .rename{
+  border-bottom: 2rpx solid #F4F4F4FF;
+}

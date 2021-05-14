@@ -1,0 +1,61 @@
+<navigation-back Title="Flag"></navigation-back>
+<!-- 重命名界面 -->
+<view class="toast" style="height: {{screenH}}" hidden="{{showToast}}">
+  <view  class="toastBg"></view>
+  <view class="toastCon">
+    <view class="showtoast">
+      <view class="title">重命名：输入修改后的名称</view>
+      <input type="text"  placeholder="最多10字符" maxlength="10" bindinput="getRenameInfo" class="modify" value="Flag"/>
+      <view class='operation'>
+        <view class="cancel" bindtap="cancelRename">取消</view>
+        <view class="confirm" bindtap="confirmRename">确认</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+  <!-- 操作部分 -->
+  <view class="operationView" style="top: {{viewOpeH}}"  hidden="{{noOperation}}">
+        <view class="rename" bindtap="rename">重命名</view>
+        <view class="delete" bindtap='delete'>删除</view>
+  </view>
+
+
+<view class="pageCon" style="height: {{pageH}}">
+  <!-- 页面部分 -->
+  <view class="container">
+    <!-- 标题部分 -->
+    <view class="titleCon">
+      <view class="con">
+        <view class="title">时间线<text>(正序)</text></view>
+          <image class="operation" src="../../imgs/icon/dots.png" mode="aspectFit" bindtap="clickOperation"></image>
+      </view>
+    </view>
+    <view style="height: 142rpx"></view>
+    <!-- 内容区域 -->
+    <scroll-view class="contentCon" scroll-y="true">
+      <view ></view>
+      <view class="addCon">
+        <view class="time">今天</view>
+        <view class="add">
+        <input class="input" type="text" value='{{content}}' bindinput="getInputInfo"  placeholder="立一个Flag！" placeholder-style="color: grey" />
+        <image class="icon" bindtap="addNewFlag" src="../../imgs/icon/add.png" mode="aspectFit"></image>
+      </view>
+      </view>
+      <!-- flags列表 -->
+      <view class="flagsList">
+        <view class="li"  wx:for="{{flagList}}" wx:key="id" id='{{index}}'>
+          <view class="time">{{item.time}}</view>
+          <view class="status{{item.status}}">
+            <input class="task" id="{{index}}" confirm-type="done" bindconfirm='updataItemInfo'  value="{{item.content}}" focus = "{{item.isfocus}}">
+            </input>
+            <image class="flagIcon" src="../../imgs/icon/flag{{item.status}}.png" id="{{index}}" bindtap="clickFlag" catchlongpress="longPressItem" mode="aspectFit"></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 底部菜单栏 -->
+  <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" >
+  </mp-actionSheet>
+</view>

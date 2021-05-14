@@ -1,0 +1,100 @@
+
+<!-- 自定义导航条组件 -->
+<navigation-bar Title="统计"></navigation-bar>
+
+<!-- 不隐藏view需要将hidden设置为空，不能设置为flase -->
+<scroll-view  class="container" scroll-y="true" style="height: {{pageH}}">
+<!-- 页面1，用户登录且创建了事项 -->
+<view class="LgCt" wx:if = '{{isCreated}}'>
+  <!-- 用户昵称 --> 
+  <view class="userInfo">
+    <text>亲爱的</text>
+    <view class="userName">
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+      <text>,</text></view>
+    
+  </view>
+  <!-- 用户时间信息 -->
+  <view class="resterTimeInfo">
+    <text>在过去的 <text class="rtime">{{registerTime}}</text> 天里，你一共</text>
+  </view>
+  <!-- 用户创建统计信息 -->
+  <view class="createInfo">
+    <view class="title">创建了</view>
+    <view class="statistics">
+      <view class="todo">
+        <text class="num" style="color: rgba(0, 111, 255, 1)" >{{userInfo.createInfo.todo}}</text><text>条待办</text>
+      </view>
+      <view class="flag" >
+        <text class="num" style="color: rgba(255, 80, 80, 1)">{{userInfo.createInfo.flag}}</text><text>条Flag</text>
+      </view>
+      <!-- <view class="iede" >
+        <text class="num" style="color: rgba(255, 173, 10, 1)">{{userInfo.createInfo.idea}}</text><text>条想法</text>
+      </view> -->
+      <view class="reminder">
+        <text class="num" style="color: rgba(141, 10, 255, 1)">{{userInfo.createInfo.reminder}}</text><text>条提醒</text>
+      </view>
+      <view class="event">
+        <text class="num" style="color: rgba(122, 122, 122, 1)">{{userInfo.createInfo.customEve}}</text><text>条自定义事项</text>
+      </view>
+    </view>
+  </view>
+  <!-- 用户完成统计信息 -->
+  <view class="finishedInfo">
+    <view class="title">完成了</view>
+    <view class="statistics">
+      <view class="todo">
+        <text class="num" style="color: rgba(0, 111, 255, 1)">{{userInfo.finishInfo.todo}}</text><text>条待办</text>
+      </view>
+      <view class="flag">
+        <text class="num" style="color: rgba(255, 80, 80, 1)">{{userInfo.finishInfo.flag}}</text><text>条Flag</text>
+      </view>
+      <!-- <view class="iede">
+        <text class="num" style="color: rgba(255, 173, 10, 1)">{{userInfo.finishInfo.idea}}</text><text>条想法</text>
+      </view> -->
+      <view class="reminder">
+        <text class="num" style="color: rgba(141, 10, 255, 1)">{{userInfo.finishInfo.reminder}}</text><text>条提醒</text>
+      </view>
+      <view class="event">
+        <text class="num" style="color: rgba(122, 122, 122, 1)">{{userInfo.finishInfo.customEve}}</text><text>条自定义事项</text>
+      </view>
+    </view>
+  </view>
+  <view class="fill" style="height: 30rpx"></view>
+  <!-- 今日创建信息 -->
+  <!-- <view class="eventToday" style="color:rgba(135, 135, 135, 1)">
+    <text>今日共有 <text style="font-weight: bolder" class="num">87</text> 个事项被创建</text>
+  </view> -->
+</view>
+
+<!-- 统计页2，登录但还未创建事项 -->
+<view class="LgOc" wx:else ="{{isCreated}}" hidden="{{}}">
+  <!-- 用户昵称 --> 
+  <view class="userInfo">
+    <text>亲爱的</text>
+    <view class="userName">
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+      <text>,</text>
+    </view>
+    
+  </view>
+  <!-- 用户注册时间信息 -->
+  <view class="resterTimeInfo">
+    <text>在过去的 <text class="rtime">325</text> 天里，你一共</text>
+  </view>
+  <!-- 未创建事项提示框 -->
+  <view class="noEventContainer">
+    <view class="eventBox">
+      <text class="rem">你还没创建任何事项</text>
+    </view>
+    <view class="eventBtn" bindtap="createNewOne">立即创建第一个事项</view>
+  </view>
+  
+  <!-- 今日创建信息 -->
+  <!-- <view class="eventToday" style="color: rgba(135, 135, 135, 1)"> 
+    <text>今日共有 <text style="font-weight: bolder" class="num">0</text> 个事项被创建</text>
+  </view> -->
+</view>
+
+</scroll-view>
+

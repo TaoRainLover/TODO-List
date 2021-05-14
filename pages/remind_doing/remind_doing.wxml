@@ -1,0 +1,36 @@
+<!--pages/remind_doing/remind.wxml-->
+<navigation-back Title="{{title}}"></navigation-back>
+<view class="container" style="height: {{pageH}}">
+  <view class="contentContainer">
+    <view class="title">
+      <view class="attribution">
+        <text class="doing" id="doing" bindtap="navigateTo" style="{{style_doing}}">进行中</text>
+        <text class="complete" id="done" bindtap="navigateTo" style="{{style_done}}">已完成</text>
+      </view>
+      <image class="dot" src="../../imgs/icon/dots.png" mode="aspectFit" bindtap="moreOperation"></image>
+    </view>
+    <!-- 进行中 -->
+    <scroll-view class="tdlist" scroll-y="true" hidden="{{showDoing}}">
+      <view class="li" wx:for="{{onlist}}" wx:key="id">
+        <input class="input{{item.status}}" confirm-type="done" bindconfirm='updataItemInfo' id="{{index}}" value="{{item.content}}"></input>
+        <view id="{{item.id}}" catchlongpress="longPressItem" bindtap="changeStatus" class="status{{item.status}}" id="{{index}}" mode="aspectFit"></view>
+      </view>
+      <view class="add">
+        <input class="addinput" type="text" value="{{newInfo}}" placeholder="点击创建新的提醒" placeholder-style="color: grey"  bindinput="getNewEveInfo"/>
+        <image src="../../imgs/icon/add.png" bindtap="addNewEvent" mode="aspectFit" lazy-load='true'></image>
+       </view>
+    </scroll-view>
+    <scroll-view class="tdlist" scroll-y="true" hidden="{{showDone}}">
+      <!-- 已完成 -->
+      <view class="li" wx:for="{{finishedList}}" wx:key="id">
+        <input class="input{{item.status}}" confirm-type="done" bindconfirm='updataItemInfo' id="{{index}}"  value="{{item.content}}"></input>
+        <view class="status{{item.status}}" id="{{index}}" bindtap="changeStatus" catchlongpress="longPressItem" mode="aspectFit"></view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="operationView" style="top: {{viewOpeH}}"  hidden="{{noOperation}}">
+    <view class="rename" bindtap="rename">重命名</view>
+    <view class="delete" bindtap='delete'>删除</view>
+  </view>
+  
+</view>

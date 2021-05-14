@@ -1,0 +1,117 @@
+/* pages/todo_overdue/todo.wxss */
+
+.container{
+  
+  background: rgba(247, 246, 254, 0.56);
+  border-radius: 24px 24px 0px 0px;
+  box-sizing: border-box;
+  /* padding: 0 34rpx; */
+  bottom: 0;
+  width: 100%;
+}
+.contentContainer{
+  height: 100%;
+}
+.title{
+  padding: 0 34rpx;
+  height: 66rpx;
+  font-size: 48rpx;
+  padding-top: 38rpx;
+  padding-bottom: 38rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.today{
+  margin-right: 40rpx;
+}
+.overdue{
+  margin-right: 40rpx;
+}
+.title .dot{
+  width: 56rpx;
+  height: 74rpx;
+}
+.time{
+  font-size: 32rpx;
+  height: 44rpx;
+  color: black;
+  margin: 18rpx 0;
+}
+.item{
+  height: 88rpx;
+  font-size: 40rpx;
+  line-height: 88rpx;
+  border-bottom: 2rpx solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inputtrue{
+  color:  rgba(141, 141, 141, 1);
+  text-decoration: line-through;
+}
+.statusfalse{
+  width: 56rpx;
+  height: 56rpx;
+  background: white;
+  box-shadow: 0rpx 0rpx 40rpx rgba(129, 129, 129, 0.3);
+  border-radius: 28rpx;
+}
+.statustrue{
+  width: 56rpx;
+  height: 56rpx;
+  background: rgba(141, 141, 141, 1);
+  border-radius: 28rpx;
+}
+.li{
+  padding: 0 34rpx;
+  margin-top: 24rpx;
+}
+.tdlist{
+  height: 85%;
+}
+.list{
+  height: 88rpx;
+  font-size: 40rpx;
+  line-height: 88rpx;
+  border-bottom: 2rpx solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 34rpx;
+}
+.add{
+  height: 88rpx;
+  font-size: 40rpx;
+  line-height: 88rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 34rpx;
+}
+.add image{
+  width: 56rpx;
+  height: 56rpx;
+}
+.operationView{
+  width: 248rpx;
+  height: 112rpx;
+  background: rgb(255, 255, 255);
+  position: fixed;
+  top: 102rpx;
+  right: 36rpx;
+  border-radius: 14rpx;
+  box-shadow: 0px 0px 99px #C6C6C6;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  z-index: 999;
+}
+.operationView view{
+  height: 56rpx;
+  padding-left: 14rpx;
+  display: flex;
+  align-items: center;
+}
+.operationView .rename{
+  border-bottom: 2rpx solid #F4F4F4FF;
+}

@@ -1,0 +1,101 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/reminder/reminder",
+          "pathName": "pages/reminder/reminder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "index",
+          "pathName": "pages/flags/flags",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/statistics/statistics",
+          "pathName": "pages/statistics/statistics",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/createNewClass/createNewClass",
+          "pathName": "pages/createNewClass/createNewClass",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/addNewEvent/addNewEvent",
+          "pathName": "pages/addNewEvent/addNewEvent",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/flags/flags",
+          "pathName": "pages/flags/flags",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/loginDemo/loginDemo",
+          "pathName": "pages/loginDemo/loginDemo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/flag-pan/flag-pan",
+          "pathName": "pages/flag-pan/flag-pan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/idea-pan/idea-pan",
+          "pathName": "pages/idea-pan/idea-pan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/idea-content/idea-content",
+          "pathName": "pages/idea-content/idea-content",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/idea_content/idea_content",
+          "pathName": "pages/idea_content/idea_content",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/remind_doing/remind_doing",
+          "pathName": "pages/remind_doing/remind_doing",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/todos/todos",
+          "pathName": "pages/todos/todos",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

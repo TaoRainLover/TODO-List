@@ -1,0 +1,38 @@
+<!--pages/createNewClass/createNewClass.wxml-->
+<navigation-cancel Title="取消"></navigation-cancel>
+<view class="container">
+  <view class="ctCon">
+    <view class="classForm">
+      <view class="title">新建列表</view>
+      <view class="headline">输入标题</view>
+      <input focus="{true}" type="text" maxlength='15' placeholder="最多15字符" placeholder-style="color:rgba(141, 141, 141, 1)" style="color: {{inputColor}}" bindinput="getInputContent" />
+      <view class="colorTitle" >选择颜色</view>
+      
+      <!-- test 列表渲染-->
+      <view class="colorBox">
+        <view class="color" >
+          <view wx:for="{{colorList.list1}}"  wx:key='id'  wx:for-index="id" wx:for-item="item" id = "{{item.id}}"  bindtap="changeColor" style="background: {{item.bColor}}; border: 10rpx solid {{item.bColor}}; {{item.clickColor}}">
+          </view>
+        </view>
+        <view class="color" >
+          <view wx:for="{{colorList.list2}}"  wx:key='id'  wx:for-index="id" wx:for-item="item" id = "{{item.id}}"  bindtap="changeColor" style="background: {{item.bColor}}; border: 10rpx solid {{item.bColor}}; {{item.clickColor}}">
+          </view>
+        </view>
+        
+      </view>
+      <view class="contentTitle">内容格式</view>
+      <view class="contentType">
+        <view class="eveBox box">
+          <image class='eventIcon icon' id="type1" bindtap="selectContentType"  mode="aspectFit" src="../../imgs/addNewClass/eventIcon{{eventIconStatus}}foucus.png" ></image>
+          <view class="des">事项</view>
+        </view>
+        <view class="passBox box">
+          <image class="passIcon icon" id="type2" bindtap="selectContentType" mode="aspectFit" src="../../imgs/addNewClass/passageIcon{{passIconStatus}}focus.png"></image>
+          <view class="des">文章</view>
+        </view>
+      </view>
+    </view>
+    <button class="submitBtn" bindtap="submit" style="background: {{buttonBg}}; color: {{buttonCr}}">完成创建</button>
+
+  </view>
+</view>

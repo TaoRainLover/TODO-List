@@ -1,0 +1,16 @@
+<!--pages/testBar/testBar.wxml-->
+<!-- 自定义顶部栏 -->
+<view class="nav-bar" style="height:{{navBarHeight}}px;">
+    <view class="barCon" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; bottom:{{menuBotton}}px;">
+ 
+
+        <!-- <view class="circle"></view> -->
+        <view bind:tap="clickCancel" class="cancel">{{Title}}</view>
+
+    </view>
+</view>
+<!-- 
+    内容区域：
+    自定义顶部栏用的fixed定位，会遮盖到下面内容，注意设置好间距
+-->
+<view class="content" style="margin-top:{{navBarHeight}}px;"></view>

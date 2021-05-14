@@ -1,0 +1,52 @@
+{
+  "pages":[
+    "pages/todos/todos",
+
+    "pages/remind_doing/remind_doing",
+    "pages/actionSheet-test/actionSheet-test",
+    "pages/idea_content/idea_content",
+    "pages/flag-pan/flag-pan",
+    "pages/idea-pan/idea-pan",
+    "pages/loginDemo/loginDemo",
+    "pages/index/index",
+    "pages/statistics/statistics",
+    "pages/flags/flags",
+    "pages/reminder/reminder",
+    "pages/login/login",
+    "pages/createNewClass/createNewClass",
+    "pages/addNewEvent/addNewEvent"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "backgroundColor": "#fff",  
+
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle":"black",
+    "navigationStyle":"custom"
+  },
+  "tabBar": {
+    "color": "#BFBFBF",
+    "selectedColor": "#006fff",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "效率",
+      "iconPath": "imgs/icon/indexDown.png",
+      "selectedIconPath": "./imgs/icon/indexOn.png"
+    },{
+      "pagePath": "pages/statistics/statistics",
+      "text": "统计",
+      "iconPath": "imgs/icon/statisticDown.png",
+      "selectedIconPath": "imgs/icon/statisticON.png"
+    }]
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "usingComponents": {
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+  
+}

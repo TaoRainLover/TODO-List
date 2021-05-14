@@ -1,0 +1,15 @@
+/* pages/loginDemo/loginDemo.wxss */
+.container{
+  height: 500rpx;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.userPhoto{
+  height: 64rpx;
+  width: 64rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}

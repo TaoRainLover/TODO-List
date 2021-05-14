@@ -1,0 +1,16 @@
+<!--pages/idea_detail/idea.wxml-->
+<!-- 顶部条 -->
+<navigation-back Title="内容"></navigation-back>
+
+<view class="container" style="height: {{pageH}}">
+  <view class="contentContainer">
+    <view class="time">2021/4/15</view>
+    <view class="title">
+      <input type="text" confirm-type="done" bindconfirm='submit' value="{{title}}" bindinput="getTitle" placeholder="输入标题"></input>
+    </view>
+    <scroll-view class="list" scroll-y="true">
+      <textarea name="" id="" cols="30" rows="20"  value="{{content}}" bindinput="getContent" confirm-type="done" bindconfirm='submit' maxlength="-1"  placeholder="输入正文内容"></textarea>
+    </scroll-view>
+  </view>
+</view>
+

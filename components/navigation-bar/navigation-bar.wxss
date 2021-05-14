@@ -1,0 +1,35 @@
+/* pages/testBar/testBar.wxss */
+.nav-bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: #fff;
+  /* background: cadetblue; */
+  background: #fff;
+}
+
+.nav-bar .barCon {
+  /* width: 60%; */
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  
+  position: absolute;
+  
+  /* background: rgb(204, 85, 85); */
+  padding-left: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar .barCon .userPhoto{
+  /* display: inline-table; */
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  /* background: #FFF6F6; */
+  margin-right: 10rpx;
+}
+.nav-bar .barCon text{
+  font-size: 48rpx;
+}

@@ -1,0 +1,55 @@
+/* pages/idea_detail/idea.wxss */
+page{
+  width: 100%;
+  font-family: "苹方-简";
+}
+.container{
+  background: rgba(247, 246, 254, 0.56);
+  border-radius: 24px 24px 0px 0px;
+  box-sizing: border-box;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+}
+.contentContainer{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.list{
+  margin-top: 28rpx;
+  padding-top: 22rpx;
+  padding-bottom: 22rpx;
+  height: 80%;
+  width: 710rpx;
+  border-radius: 28rpx;
+  background-color: white;
+  font-size: 40rpx;
+}
+.list textarea{
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin:0 22rpx;
+}
+.time{
+  height: 70rpx;
+  font-size: 32rpx;
+  color: rgba(141, 141, 141, 1);
+  line-height: 70rpx;
+  text-align: center;
+}
+.title{
+  height: 82rpx;
+  width: 710rpx;
+  background-color: white;
+  border-radius: 28rpx;
+  line-height: 82rpx;
+  font-size: 40rpx;
+}
+.title input{
+  margin-left: 24rpx;
+  line-height: 82rpx;
+  height: 82rpx;
+}

@@ -1,0 +1,51 @@
+<!--pages/todo_overdue/todo.wxml-->
+<navigation-back Title='待办'></navigation-back>
+
+<view class="container" style="height: {{pageH}}">
+  <view class="contentContainer">
+    <view class="title" >
+      <view class="attribution">
+        <text class="today" id="today" bindtap="navigateTo" style="{{style_today}}">今天</text>
+        <text class="overdue" id="overdue" bindtap="navigateTo" style="{{style_overdue}}">更早</text>
+        <text class="complete" id="complete" bindtap="navigateTo" style="{{style_complete}}">已完成</text>
+      </view>
+      <image class="dot" src="../../imgs/icon/dots.png" mode="aspectFit" bindtap="moreOperation"></image>
+    </view>
+    <!-- 更早 -->
+    <scroll-view class="tdlist" scroll-y="true" hidden="{{showoverdue}}">
+      <view class="li" wx:for="{{beforeLi}}" wx:key="id" wx:for-index='day' wx:for-item='dayList'>
+        <view class="time">{{dayList._id}}</view>
+        <view class="item" wx:for="{{dayList.list}}" wx:key="_id" wx:for-index='index'>
+          <input class="input{{item.status}}" confirm-type="done" bindconfirm='updataItemInfo'  id="{{day}}/{{index}}"   value="{{item.content}}"></input>
+          <view class="status{{item.status}}" id="{{day}}/{{index}}" mode="aspectFit" catchlongpress="longPressItem" bindtap="changeStatus"></view>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 今天 -->
+    <scroll-view class="tdlist" scroll-y="true" hidden="{{showtoday}}">
+      <view class="list" wx:for="{{tdlist}}" wx:key="id">
+        <input class="input{{item.status}}" confirm-type="done" bindconfirm='updataItemInfo' id="{{index}}" value="{{item.content}}"></input>
+        <view class="status{{item.status}}"  id="{{index}}" bindtap="changeStatus" catchlongpress="longPressItem" mode="aspectFit"></view>
+      </view>
+      <view class="add">
+        <input class="addinput" type="text"  placeholder="点击创建新的待办" confirm-type="done" bindconfirm='addNewTodo' placeholder-style="color: grey" value='{{newTodoInfo}}' bindinput="getNewTodoInfo"/>
+        <image bindtap="addNewTodo" src="../../imgs/icon/add.png" mode="aspectFit" lazy-load='true'></image>
+      </view> 
+    </scroll-view>
+    <!-- 已完成 -->
+    <scroll-view class="tdlist" scroll-y="true" hidden="{{showdone}}">
+      <view class="list" wx:for="{{finishedLi}}" wx:key="id">
+        <input class="input{{item.status}}" confirm-type="done" bindconfirm='updataItemInfo' id="{{index}}" value="{{item.content}}"></input>
+        <view class="status{{item.status}}" id="{{index}}" bindtap="changeStatus" catchlongpress="longPressItem" mode="aspectFit"></view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 操作区 -->
+  <view class="operationView" style="top: {{viewOpeH}}"  hidden="{{noOperation}}">
+    <view class="rename" bindtap="rename">重命名</view>
+    <view class="delete" bindtap='delete'>删除</view>
+  </view>
+  <!-- 底部菜单栏 -->
+  <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" >
+  </mp-actionSheet>
+</view>
