@@ -38,7 +38,7 @@
       <view class="addCon">
         <view class="time">今天</view>
         <view class="add">
-        <input class="input" type="text" value='{{content}}' bindinput="getInputInfo"  placeholder="立一个Flag！" placeholder-style="color: grey" />
+        <input class="input" type="text" value='{{content}}' bindinput="getInputInfo" bindconfirm="addNewFlag" placeholder="立一个Flag！" placeholder-style="color: grey" />
         <image class="icon" bindtap="addNewFlag" src="../../imgs/icon/add.png" mode="aspectFit"></image>
       </view>
       </view>

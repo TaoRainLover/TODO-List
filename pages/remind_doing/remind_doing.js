@@ -75,19 +75,49 @@ Page({
   addNewEvent: function(){
     let content = this.data.newInfo;
     if(content != ''){
+      // 本地添加
+      let newItem = {id:1,
+        content:content,
+        status:false,
+        time:'0',
+      }
+      this.data.onlist.push(newItem);
+      this.setData({
+        onlist: this.data.onlist,
+        newInfo: ''
+      })
+      // 数据库添加
       wx.cloud.callFunction({
         name: 'addNewListItem',
-        data: {ItemClass: this.data.title, ItemType: this.data.type, ItemContent: this.data.newInfo}
+        data: {ItemClass: this.data.title, ItemType: this.data.type, ItemContent: content}
       }).then(res => {
         // console.log(res);
         if(res.result == true){
-          // 1.清除输入框内容
-          this.setData({
-            newInfo: ''
-          })
           // 2.更新正在进行列表
           this.getOnLineList();
+        }else{
+          // 则移除刚刚添加的本地数据
+          console.log(err);
+          wx.showToast({
+            title: '网络异常',
+            icon: 'none'
+          })
+          this.data.onlist.pop();
+          this.setData({
+            onlist: this.data.onlist
+          })
         }
+      }).catch(err => {
+        // 则移除刚刚添加的本地数据
+        console.log(err);
+        wx.showToast({
+          title: '网络异常',
+          icon: 'none'
+        })
+        this.data.onlist.pop();
+        this.setData({
+          onlist: this.data.onlist
+        })
       })
     }
   },

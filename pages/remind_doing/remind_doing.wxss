@@ -48,6 +48,11 @@
   justify-content: space-between;
   color:  rgba(141, 141, 141, 1);
 } */
+.li input{
+  height: 56rpx;
+  line-height: 56rpx;
+  width: 530rpx;
+}
 .statusfalse{
   width: 56rpx;
   height: 56rpx;

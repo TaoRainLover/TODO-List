@@ -31,7 +31,7 @@ page{
   display: block;
   width: 100%;
   height: 100%;
-  margin:0 22rpx;
+  margin:0 18rpx;
 }
 .time{
   height: 70rpx;

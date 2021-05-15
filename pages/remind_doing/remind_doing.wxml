@@ -16,7 +16,7 @@
         <view id="{{item.id}}" catchlongpress="longPressItem" bindtap="changeStatus" class="status{{item.status}}" id="{{index}}" mode="aspectFit"></view>
       </view>
       <view class="add">
-        <input class="addinput" type="text" value="{{newInfo}}" placeholder="点击创建新的提醒" placeholder-style="color: grey"  bindinput="getNewEveInfo"/>
+        <input class="addinput" type="text" value="{{newInfo}}" placeholder="点击创建新的提醒" placeholder-style="color: grey" bindconfirm="addNewEvent"  bindinput="getNewEveInfo"/>
         <image src="../../imgs/icon/add.png" bindtap="addNewEvent" mode="aspectFit" lazy-load='true'></image>
        </view>
     </scroll-view>

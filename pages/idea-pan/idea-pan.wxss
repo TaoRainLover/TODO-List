@@ -30,10 +30,16 @@ page{
 }
 .search{
   display: flex;
+  align-items: center;
   width: 600rpx;
   height: 76rpx;
   background: white;
   border-radius: 38rpx;
+}
+.search input{
+  height: 56rpx;
+  line-height: 56rpx;
+  width: 500rpx;
 }
 .text{
   height: 76rpx;
@@ -46,7 +52,6 @@ page{
 }
 .icon{
   margin-left: 22rpx;
-  margin-top: 22rpx;
   width: 38rpx;
   height: 36rpx;
 }

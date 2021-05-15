@@ -30,7 +30,6 @@ App({
     // 获取用户数据
     this.getUserStatisticInfo();
     this.getUseTime();
-
     // 佛祖保佑
     // this.BuddhaBless()
   },

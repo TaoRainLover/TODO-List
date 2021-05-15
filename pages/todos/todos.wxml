@@ -28,7 +28,7 @@
         <view class="status{{item.status}}"  id="{{index}}" bindtap="changeStatus" catchlongpress="longPressItem" mode="aspectFit"></view>
       </view>
       <view class="add">
-        <input class="addinput" type="text"  placeholder="点击创建新的待办" confirm-type="done" bindconfirm='addNewTodo' placeholder-style="color: grey" value='{{newTodoInfo}}' bindinput="getNewTodoInfo"/>
+        <input class="addinput" type="text" bindconfirm='addNewTodo'  placeholder="点击创建新的待办" confirm-type="done" bindconfirm='addNewTodo' placeholder-style="color: grey" value='{{newTodoInfo}}' bindinput="getNewTodoInfo"/>
         <image bindtap="addNewTodo" src="../../imgs/icon/add.png" mode="aspectFit" lazy-load='true'></image>
       </view> 
     </scroll-view>

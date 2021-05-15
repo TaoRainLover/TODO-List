@@ -58,7 +58,15 @@
     </view>
   </view>
   <view class="fill" style="height: 30rpx"></view>
-  
+  <!-- 底部填充-兼容小型手机 -->
+  <view class="fillBottom" style="height: 50px"></view>
+  <!-- 快速跳转到创建事项页 -->
+  <view class="addNewEve">
+    <navigator url="../addNewEvent/addNewEvent" class="naviToCreateP" style="color:rgba(135, 135, 135, 1)">
+        <image class="img" src="../../imgs/icon/add.png"></image>
+        <view>快速新建事项</view>
+    </navigator>
+  </view>
 </view>
 
 <!-- 统计页2，登录但还未创建事项 -->
@@ -84,18 +92,8 @@
     <view class="eventBtn" bindtap="createNewOne">立即创建第一个事项</view>
   </view>
   
-  <navigator url="../addNewEvent/addNewEvent" class="naviToCreateP" style="color:rgba(135, 135, 135, 1)">
-    <image class="img" src="../../imgs/icon/add.png"></image>
-    <view>快速新建事项</view>
-  </navigator>
 </view>
 
 </scroll-view>
 
-<!-- 快速跳转到创建事项页 -->
-<view class="addNewEve">
-  <navigator url="../addNewEvent/addNewEvent" class="naviToCreateP" style="color:rgba(135, 135, 135, 1)">
-      <image class="img" src="../../imgs/icon/add.png"></image>
-      <view>快速新建事项</view>
-  </navigator>
-</view>
+

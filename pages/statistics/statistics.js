@@ -52,7 +52,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-
+  IsCreated: function(){
+    // 获取用户是否创建状态
+    let user = this.data.userInfo.createInfo;
+    let num = user.flag + user.todo + user.reminder + user.customEve;
+    if(num == 0){
+      this.setData({
+        isCreated: false,
+      })
+    }
+  },
   onLoad: function (options) {
     // 设置页面高度
     let totalInfo = 'userInfo.createInfo';
@@ -63,6 +72,7 @@ Page({
       [finishedInfo]: app.globalData.userInfo.finishInfo,
       registerTime: app.globalData.registerTime,
     })
+    this.IsCreated();
   },
 
   createNewOne: function(){
@@ -85,7 +95,7 @@ Page({
     // 更新用户数据
     // app.getUseTime();
     this.getUserStatisticInfo();
-    
+    this.IsCreated();
   },
 
   /**

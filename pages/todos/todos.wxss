@@ -1,7 +1,6 @@
 /* pages/todo_overdue/todo.wxss */
 
 .container{
-  
   background: rgba(247, 246, 254, 0.56);
   border-radius: 24px 24px 0px 0px;
   box-sizing: border-box;
@@ -36,6 +35,7 @@
   height: 44rpx;
   color: black;
   margin: 18rpx 0;
+  font-weight: bolder;
 }
 .item{
   height: 88rpx;
@@ -80,6 +80,7 @@
   justify-content: space-between;
   padding: 0 34rpx;
 }
+
 .add{
   height: 88rpx;
   font-size: 40rpx;
@@ -88,6 +89,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 34rpx;
+}
+.add input, .list input, .item input{
+  width: 530rpx;
+  height: 56rpx;
+  line-height: 56rpx;
 }
 .add image{
   width: 56rpx;

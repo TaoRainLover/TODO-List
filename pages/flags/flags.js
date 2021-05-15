@@ -185,48 +185,69 @@ Page({
   addNewFlag: function(){
     let that = this;
     // 获取当前时间
-    let curData = new Date().toLocaleDateString();
+    let curData = new Date();
+    let today  = curData.getFullYear()+'/'+(curData.getMonth()+1)+'/'+curData.getDate();
     // 获取用户输入的内容
     let content = this.data.content;
     // 类型
-    let type = "flag";
     if(content == ''){
       wx.showToast({
         title: '请输入Flag内容！',
         icon: "none",
       })
     }else{
-      // 向数据库提交、然后重新刷新页面
-      console.log('你将提交如下内容：',type, curData, content);
+      // 本地添加
+      let newItem = {id:1,
+        content:content,
+        status:false,
+        time: today,
+      }
+      // 向数组第一个位置添加一条数据
+      that.data.flagList.unshift(newItem);
+      that.setData({
+        flagList: that.data.flagList,
+        content: '',
+      })
+      // 向数据库提交添加、然后重新刷新页面
+      console.log('你将提交如下内容：flag,', today, content);
       // 刷新页面（或者更新数据）：
       wx.cloud.callFunction({
         name: 'addNewListItem',
         data: {
-          ItemClass: 'Flag', ItemType: 'flag', ItemContent: this.data.content
+          ItemClass: 'Flag', ItemType: 'flag', ItemContent: content
         }
       }).then(res => {
-        this.getFlagList();
+        if(res.result){
+          // 更新列表
+          this.getFlagList();
+        }else{
+          // 数据库添加失败
+          wx.showToast({
+            title: '网络异常',
+            icon: 'none'
+          })
+          this.data.flagList.shift();
+          this.setData({
+            flagList: this.data.flagList
+          })
+        }
+      }).catch(err => {
+        // 数据库添加失败
+        console.log(err);
+        wx.showToast({
+          title: '网络异常',
+          icon: 'none'
+        })
+        this.data.flagList.shift();
         this.setData({
-          content: ''
+          flagList: this.data.flagList
         })
       })
       
     }
   },
 
-  // // 监听点击项输入框事件
-  // getFocusItemInputInfo: function(e){
-  //   console.log(e.detail.value, e.currentTarget.id);
-  //   let index = e.currentTarget.id;
-  //   let content= e.detail.value;
-  //   // wx.cloud.callFunction({
-  //   //   name: '',
-  //   //   data: {
-
-  //   //   }
-  //   // }).then()
-  // },
-  // 键盘点击完成-->提交
+  // 修改内容-->键盘点击完成-->提交
   updataItemInfo: function(e){
     let index = e.currentTarget.id;
     let content= e.detail.value;

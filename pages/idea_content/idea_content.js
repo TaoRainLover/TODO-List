@@ -29,7 +29,7 @@ Page({
       content: e.detail.value,
     })
   } ,
-  // 添加操作
+  // 添加和修改操作 添加成功后会回退到列表页，修改成功不会回退
   submit: function(e){
     if(this.data.type == 'add'){
       console.log('添加操作',e)
@@ -73,10 +73,17 @@ Page({
             content: this.data.content
           }
         }).then(res => {
-          console.log(res);
-          wx.navigateBack({
-            delta: 1,
-          })
+          console.log('修改情况：',res);
+          if(res.result){
+            wx.showToast({
+              title: '修改成功！',
+            })
+          }else{
+            wx.showToast({
+              title: '网络异常！',
+              icon: 'none'
+            })
+          }
         })
       }
     }

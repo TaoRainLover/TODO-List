@@ -1,15 +1,3 @@
-/* pages/flags/flags.wxss */
-page{
-  /* height: 100%; */
-  font-family: "苹方-简";
-  /* background: rgba(247, 246, 254, 0.56); */
-  /* overflow: hidden; */
-
-}
-.pageCon{
-  /* background: skyblue; */
-}
-
 /* 对话框区域 */
 .toast{
     width: 100%;
@@ -125,7 +113,11 @@ image{
 .contentCon{
   height: 85%;
 }
-
+.add input, .flagsList .li input{
+  width: 530rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+}
 .addCon .time, .flagsList .time{
   font-size: 32rpx;
   height: 44rpx;
@@ -154,9 +146,6 @@ image{
   color: black;
 }
 /* 输入框样式 */
-.add input{
-  height:  56rpx;
-}
 
 .flagsList .li .con{
   /* 添加白色下边框 */

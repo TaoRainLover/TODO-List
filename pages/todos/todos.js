@@ -13,30 +13,6 @@ Page({
     tdlist: [
     ],
     beforeLi: [
-      {
-        id:1,
-        content:'提交项目文档',
-        status:0,
-        time:'2018/5/1',
-      },
-      {
-        id:2,
-        content:'给自己加油打气',
-        status:1,
-        time:'2018/5/2',
-      },
-      {
-        id:3,
-        content:'带垃圾下楼',
-        status:0,
-        time:'2018/5/3',
-      },
-      {
-        id:4,
-        content:'50天上铂金 1/50',
-        status:1,
-        time:'2018/5/3',
-      }
     ],
     finishedLi:[],
     // 切换列表设置
@@ -120,19 +96,47 @@ Page({
   addNewTodo: function(){
     let content = this.data.newTodoInfo;
     if(content != ''){
+      // 本地添加
+      let newItem = {id:1,
+        content:content,
+        status:false,
+        time:'0',
+      }
+      this.data.tdlist.push(newItem);
+      this.setData({
+        tdlist: this.data.tdlist,
+        newTodoInfo: ''
+      });
       // 数据库添加
       wx.cloud.callFunction({
         name: 'addNewListItem',
         data: {ItemClass: '待办', ItemType: 'todo', ItemContent: content}
       }).then(res => {
         if(res.result == true){
-          // 1.清除输入框内容
-          this.setData({
-            newTodoInfo: ''
-          })
-          // 2.更新今天列表
+          // 更新今天列表
           this.getTodayTodo();
+        }else{
+          // 数据库添加失败
+          wx.showToast({
+            title: '网络异常',
+            icon: 'none'
+          })
+          this.data.tdlist.pop();
+          this.setData({
+            tdlist: this.data.tdlist
+          })
         }
+      }).catch(err=>{
+        // 则移除刚刚添加的本地数据
+        console.log(err);
+        wx.showToast({
+          title: '网络异常',
+          icon: 'none'
+        })
+        this.data.tdlist.pop();
+        this.setData({
+          tdlist: this.data.tdlist
+        })
       })
     }
     
