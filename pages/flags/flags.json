@@ -1,4 +1,5 @@
 {
-  "backgroundColor": "#fbfafe",
+  "enablePullDownRefresh": false,
+  "disableScroll": true,
   "usingComponents": {"navigation-back": "../../components/navigation-back/navigation-back"}
 }

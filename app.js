@@ -17,6 +17,9 @@ App({
     that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
     that.globalData.menuBotton = menuButtonInfo.top - systemInfo.statusBarHeight;
     that.globalData.menuHeight = menuButtonInfo.height;
+
+
+
     // 修改页面高度
     wx.getSystemInfo({
       success: (result) => {
@@ -24,6 +27,8 @@ App({
         that.globalData.screenHeight = result.screenHeight;
         // pageH = screenH - navBarH
         that.globalData.pageHeight = (result.screenHeight - that.globalData.navBarHeight) + 'px';
+        // 设置更多操作的距离页面顶部高度
+        that.globalData.viewOpeH = 112+that.globalData.navBarHeight*2 + 'rpx';
         console.log(that.globalData.pageHeight);
       },
     });
@@ -31,7 +36,7 @@ App({
     this.getUserStatisticInfo();
     this.getUseTime();
     // 佛祖保佑
-    // this.BuddhaBless()
+    this.BuddhaBless()
   },
 
   // 数据都是根据当前机型进行计算，这样的方式兼容大部分机器
@@ -43,7 +48,7 @@ App({
       menuHeight: 0, // 胶囊高度（自定义内容可与胶囊高度保证一致）
       screenHeight: 0, //屏幕高度，以防后面需要
       pageHeight: 0, //设置自定义导航条之后，page高度需要重新设置（为每个页面container设置）
-
+      viewOpeH: '',
       //第二部分： 用户信息：
       // openid,小程序用户的唯一标识
       openid:'',

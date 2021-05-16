@@ -26,7 +26,7 @@ exports.main = async (event, context) => {
       time: _.gte(startTime).and(_.lte(endTime)),
       isDelete: false
     })
-    .get();
+    .count();
   let res1 = await db.collection('Todo')
     .where({
       _openid: event.userInfo.openId,
@@ -34,10 +34,10 @@ exports.main = async (event, context) => {
       status: true,
       isDelete: false
     })
-    .get();
+    .count();
 
   return {
-    total: res0.data.length,
-    finished: res1.data.length,
+    total: res0,
+    finished: res1,
   };
 }

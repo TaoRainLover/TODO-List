@@ -1,4 +1,3 @@
-
 <!-- 自定义导航条组件 -->
 <navigation-bar Title="统计"></navigation-bar>
 
@@ -23,19 +22,16 @@
     <view class="title">创建了</view>
     <view class="statistics">
       <view class="todo">
-        <text class="num" style="color: rgba(0, 111, 255, 1)" >{{userInfo.createInfo.todo}}</text><text>条待办</text>
+        <text class="num" style="color: rgba(0, 111, 255, 1)" >{{userInfo.createInfo.todo.total}}</text><text>条待办</text>
       </view>
       <view class="flag" >
-        <text class="num" style="color: rgba(255, 80, 80, 1)">{{userInfo.createInfo.flag}}</text><text>条Flag</text>
+        <text class="num" style="color: rgba(255, 80, 80, 1)">{{userInfo.createInfo.flag.total}}</text><text>条Flag</text>
       </view>
-      <!-- <view class="iede" >
-        <text class="num" style="color: rgba(255, 173, 10, 1)">{{userInfo.createInfo.idea}}</text><text>条想法</text>
-      </view> -->
       <view class="reminder">
-        <text class="num" style="color: rgba(141, 10, 255, 1)">{{userInfo.createInfo.reminder}}</text><text>条提醒</text>
+        <text class="num" style="color: rgba(141, 10, 255, 1)">{{userInfo.createInfo.reminder.total}}</text><text>条提醒</text>
       </view>
       <view class="event">
-        <text class="num" style="color: rgba(122, 122, 122, 1)">{{userInfo.createInfo.customEve}}</text><text>条自定义事项</text>
+        <text class="num" style="color: rgba(122, 122, 122, 1)">{{userInfo.createInfo.customEve.total}}</text><text>条自定义事项</text>
       </view>
     </view>
   </view>
@@ -44,16 +40,16 @@
     <view class="title">完成了</view>
     <view class="statistics">
       <view class="todo">
-        <text class="num" style="color: rgba(0, 111, 255, 1)">{{userInfo.finishInfo.todo}}</text><text>条待办</text>
+        <text class="num" style="color: rgba(0, 111, 255, 1)">{{userInfo.finishInfo.todo.total}}</text><text>条待办</text>
       </view>
       <view class="flag">
-        <text class="num" style="color: rgba(255, 80, 80, 1)">{{userInfo.finishInfo.flag}}</text><text>条Flag</text>
+        <text class="num" style="color: rgba(255, 80, 80, 1)">{{userInfo.finishInfo.flag.total}}</text><text>条Flag</text>
       </view>
       <view class="reminder">
-        <text class="num" style="color: rgba(141, 10, 255, 1)">{{userInfo.finishInfo.reminder}}</text><text>条提醒</text>
+        <text class="num" style="color: rgba(141, 10, 255, 1)">{{userInfo.finishInfo.reminder.total}}</text><text>条提醒</text>
       </view>
       <view class="event">
-        <text class="num" style="color: rgba(122, 122, 122, 1)">{{userInfo.finishInfo.customEve}}</text><text>条自定义事项</text>
+        <text class="num" style="color: rgba(122, 122, 122, 1)">{{userInfo.finishInfo.customEve.total}}</text><text>条自定义事项</text>
       </view>
     </view>
   </view>
@@ -82,7 +78,7 @@
   </view>
   <!-- 用户注册时间信息 -->
   <view class="resterTimeInfo">
-    <text>在过去的 <text class="rtime">325</text> 天里，你一共</text>
+    <text>在过去的 <text class="rtime">{{registerTime}}</text> 天里，你一共</text>
   </view>
   <!-- 未创建事项提示框 -->
   <view class="noEventContainer">

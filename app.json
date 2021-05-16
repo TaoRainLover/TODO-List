@@ -1,25 +1,19 @@
 {
   "pages":[
-    "pages/todos/todos",
-
-    "pages/remind_doing/remind_doing",
-    "pages/actionSheet-test/actionSheet-test",
-    "pages/idea_content/idea_content",
-    "pages/flag-pan/flag-pan",
-    "pages/idea-pan/idea-pan",
-    "pages/loginDemo/loginDemo",
     "pages/index/index",
     "pages/statistics/statistics",
-    "pages/flags/flags",
-    "pages/reminder/reminder",
-    "pages/login/login",
     "pages/createNewClass/createNewClass",
-    "pages/addNewEvent/addNewEvent"
+    "pages/addNewEvent/addNewEvent",
+    "pages/todos/todos",
+    "pages/remind_doing/remind_doing",
+    "pages/flag-pan/flag-pan",
+    "pages/flags/flags",
+    "pages/idea-pan/idea-pan",
+    "pages/idea_content/idea_content"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "backgroundColor": "#fff",  
-
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle":"black",
     "navigationStyle":"custom"

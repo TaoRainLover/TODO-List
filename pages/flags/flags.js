@@ -1,50 +1,39 @@
-// pages/flags/flags.js
 const app = getApp();
 // 引入deleteClass外部函数
 var funTools = require("../../funTools/time.js");
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     // operation固定条高度设置
     viewOpeH:'',
     // 屏幕高度：
     screenH: '',
-    // 液面高度：
+    // 页面高度：
     pageH: '',
-    // operation是否被点击
-    noOperation: true,
-    // flagList
-    flagList: [
-      
-    ],
-    // 输入框内容
-    content: '',
-    // 是否显示输入框
-    showToast: true,
+    // 是否隐藏更多操作界面
+    hiddenOperation: true,
+    // 重命名输入框内容
+    renameContent: '',
+    // 是否隐藏重命名界面
+    hiddenRenameToast: true,
+    // 重命名修改名称
+    reNameInfo: 'Flag',
 
+    // flagList
+    flagList: [],
     // 长按获得焦点项id
     longPressItemid: '',
-    // 重命名名称
-    reNameInfo: 'Flag',
     // 底部菜单栏设置
     showActionsheet: false,
     groups: [
-        // { text: '修改内容', value: "alter" },
-        // { text: '完成任务', value: "finish" },
         { text: '删除任务', type: 'warn', value: "delete" }
     ]
   },
-
-
   getFlagList: function(){
     // 加载flag数据
     wx.cloud.callFunction({
       name: 'getFlagList'
     }).then(res => {
-      console.log("flag:",res.result.data);
       let flagList = res.result.data;
       for(let i = 0; i < flagList.length; i++){
         flagList[i].time = funTools.serveDateToLocalDate(flagList[i].time);
@@ -58,22 +47,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(app.globalData.navBarHeight);
     // 1.修改view和屏幕高度
-    console.log("此页面已经被加载了！");
     this.setData({
-      viewOpeH: 112+app.globalData.navBarHeight*2 + 'rpx',
+      viewOpeH: app.globalData.viewOpeH,
       screenH: app.globalData.screenHeight + 'px',
       pageH: app.globalData.pageHeight,
-    })
-    // 2.清除输入框内容
-    this.setData({
       content: '',
     })
-    // 3.从数据库中获取flagList数据 --> 页面渲染成功
   },
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -83,14 +64,11 @@ Page({
   },
   // 监听事项长按：
   longPressItem:function(eve){
-    console.log('长按！', eve.currentTarget.id);
-    
     this.setData({
       showActionsheet: true,
       longPressItemid: eve.currentTarget.id,
     })
   },
-
   // 关闭底部栏
   close: function () {
     this.setData({
@@ -99,10 +77,8 @@ Page({
   },
   // 点击底部栏选项
   btnClick(e) {
-    console.log("你选择的是：",e.detail.value);
     // 获取用户选择类型
     let id = this.data.longPressItemid;
-    console.log('你进行操作的项是：',id);
     let type = e.detail.value;
     if(type == 'delete'){
       // 删除操作
@@ -132,7 +108,6 @@ Page({
       })
     }else if(type =='alter'){
       // 修改内容操作
-      console.log('修改操作！');
       for(let i = 0; i < this.data.flagList.length; i++){
         if(id == this.data.flagList[i].id){
           // 设置选中项为聚焦状态
@@ -152,36 +127,94 @@ Page({
     this.close()
   },
 
+  // 这里是更多操作设置
   // 点击operation按钮
   clickOperation:function(){
     let that = this;
-    var ishidden = this.data.noOperation;
+    var ishidden = this.data.hiddenOperation;
     if(ishidden == true){
-      console.log(ishidden);
-      // console.log('隐藏了！');
       this.setData({
-        noOperation: ''
+        hiddenOperation: false
       })
-      // console.log('修改结束');
     }else if(ishidden == ''){
-      console.log(ishidden);
       that.setData({
-        noOperation: true
+        hiddenOperation: true
       })
     }
   },
+  // 隐藏更多操作界面啊
+  hiddenOperation: function(){
+    this.setData({
+      hiddenOperation: true
+    })
+  },
+  // 点击操作区删除按钮
+  delete: function(){
+    let that = this;
+    // 弹出确认
+    wx.showModal({
+      title: '你确认要清除这个列表吗',
+      success: function (res) {
+        if (res.confirm) {
+          //点击了确定以后
+          // 1.提交删除操作
+          wx.cloud.callFunction({
+            name: 'clearLists',
+            data: {
+              className: 'Flag',
+              type: 'flag',
+              listOption: 'all'
+            }
+          }).then(res => {
+            if(res.result){
+              wx.showToast({
+                title: '清除成功！',
+              })
+              that.hiddenOperation();
+              that.getFlagList();
+            }else{
+              wx.showToast({
+                title: '网络异常',
+                icon: 'none',
+              })
+              that.hiddenOperation();
+            }
+          }).catch(err => {
+            wx.showToast({
+              title: '网络异常',
+              icon: 'none',
+            })
+            that.hiddenOperation();
+          })
+          // 2.刷新页面
+          
+        } else {
+          //这里是点击了取消以后 ---> 无操作
+          that.hiddenOperation();
 
-  // 监听顶部输入框事件
+        }
+      }
+    })
+  },
+  // 点击操作区重命名按钮
+  rename: function(){
+    // 判断该页面是否为自定义列表，否则不能进行重命名
+    wx.showToast({
+      title: '抱歉，此列表为系统创建，不能重命名',
+      icon: 'none',
+      duration: 2000
+    })
+    this.hiddenOperation();
+  },
+
+  // 监听顶部添加flag输入框事件
   getInputInfo: function(e){
     let that = this;
     that.setData({
       content: e.detail.value
     })
-    console.log('你输入的内容是', this.data.content);
   },
-
-
-  // 点击添加按钮
+  // 添加新的flag项
   addNewFlag: function(){
     let that = this;
     // 获取当前时间
@@ -209,7 +242,6 @@ Page({
         content: '',
       })
       // 向数据库提交添加、然后重新刷新页面
-      console.log('你将提交如下内容：flag,', today, content);
       // 刷新页面（或者更新数据）：
       wx.cloud.callFunction({
         name: 'addNewListItem',
@@ -233,7 +265,6 @@ Page({
         }
       }).catch(err => {
         // 数据库添加失败
-        console.log(err);
         wx.showToast({
           title: '网络异常',
           icon: 'none'
@@ -252,7 +283,6 @@ Page({
     let index = e.currentTarget.id;
     let content= e.detail.value;
     let id = this.data.flagList[index]._id;
-    console.log('提交',id, content);
     // 本地更新？
     // 数据库更新
     wx.cloud.callFunction({
@@ -263,19 +293,18 @@ Page({
         content: content
       }
     }).then(res => {
-      console.log(res.result);
       if(res.result == true){
-        console.log('更新成功！');
+        // console.log('更新成功！');
       }
     }).catch(err => {
-      console.log('更改失败！');
+      // console.log('更改失败！');
     })
   },
   // 点击完成旗帜图标:
   // flagOn <--->  flagDown相互切换
   clickFlag: function(e){
     // 1.获取点击项的id
-    console.log("旗帜被点击了", e.target.id);
+    // console.log("旗帜被点击了", e.target.id);
     let id = e.target.id;
     // 2.从flagList中匹配flag状态。
     let item = this.data.flagList[id];
@@ -297,7 +326,7 @@ Page({
     }).then(res => {
       if(res.result == true){
         // 重新获取数据
-        console.log("更改成功");
+        // console.log("更改成功");
         // this.getFlagList();
       }else{
         wx.showToast({
@@ -307,66 +336,9 @@ Page({
     })
     // 4.更新数据
   },
-  // 点击操作区删除按钮
-  delete: function(){
-    console.log("此页面即将被删除");
-    // operaions.deleteClass(1, 2);
-    let type = 'Flag';
-    // 弹出确认
-    wx.showModal({
-      title: '你确认要删除这个列表吗',
-      // content: ,
-      success: function (res) {
-        if (res.confirm) {
-          //点击了确定以后
-          console.log('你选择了删除')
-          // 1.提交删除操作
-          // ....
-          // 2.返回至index页面
-          wx.switchTab({
-            url: '../../pages/index/index',
-          })
-        } else {
-          //这里是点击了取消以后 ---> 无操作
-          console.log('你选择了取消')
-        }
-      }
-    })
-  },
+  
 
-  // 点击操作区重命名按钮
-  rename: function(){
-    // 1.显示修改框
-    this.setData({
-      showToast: false
-    })
-  },
-  // 监听重命名输入框
-  getRenameInfo: function(e){
-    console.log(e.detail.value);
-    this.setData({
-      reNameInfo: e.detail.value,
-    })
-  },
-  cancelRename: function(){
-    this.setData({
-      showToast: true
-    })
-  },
-  confirmRename: function(){
-    // 1.获取重命名信息：
-    let name = this.data.reNameInfo;
-    if(name == ''){
-      wx.showToast({
-        title: '请先输入',
-        icon: 'none',
-      })
-    }else{
-      // 2.提交修改到后台
-      console.log("你将提交如下数据：", 'flag', 'name');
-      // 3.重新刷新页面
-    }
-  },
+  
   /**
    * 生命周期函数--监听页面显示
    */

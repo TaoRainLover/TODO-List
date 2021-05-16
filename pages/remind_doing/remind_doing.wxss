@@ -1,3 +1,5 @@
+
+/* 页面部分 */
 .container{
   background: rgba(247, 246, 254, 0.56);
   border-radius: 24px 24px 0px 0px;
@@ -7,7 +9,7 @@
 .contentContainer{
   height: 100%;
 }
-.title{
+.contentContainer .title{
   height: 66rpx;
   font-size: 48rpx;
   padding: 34rpx;
@@ -112,11 +114,80 @@
 .operationView .rename{
   border-bottom: 2rpx solid #F4F4F4FF;
 }
-.toast{
+/* .toast{
   height: 800px;
   width: 100%;
   background: black;
   position: fixed;
   z-index: 1000;
   opacity: .4;
+} */
+
+/* 重命名对话框区域 */
+.toast{
+  width: 100%;
+  opacity: 1;
+  position: fixed;
+  z-index: 10110;
+}
+.toast .toastBg{
+  /* background-color: black; */
+  opacity: 0.3;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.toast .toastCon{
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: center;
+/* align-items: center; */
+margin-top: 60%;
+}
+.toast .showtoast{
+width: 522rpx;
+height: 262rpx;
+background-color: #FFFFFF;
+box-shadow: 0px 0px 198rpx #C6C6C6;
+border-radius: 28rpx;
+position: absolute;
+opacity: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+box-sizing: border-box;
+padding: 28rpx 0;
+}
+.toast .showtoast .title{
+height: 44rpx;
+font-size: 32rpx;
+}
+.toast .showtoast input{
+width: 436rpx;
+height: 60rpx;
+
+min-height:60rpx;
+background: #F4F4F4;
+opacity: 1;
+border-radius: 28rpx;
+margin: 30rpx 0 32rpx 0;
+font-size: 32rpx;
+box-sizing: border-box;
+padding-left: 22rpx;
+}
+.toast .showtoast .operation{
+height: 48rpx;
+width: 168px;
+font-size: 32rpx;
+display: flex;
+/* justify-content: space-between; */
+}
+.toast .operation .cancel{
+width: 82px;
+color: rgba(141, 141, 141, 1);
+border-right: 2rpx solid rgba(244, 244, 244, 1);
+}
+.toast .operation .confirm{
+padding-left: 94rpx;
 }

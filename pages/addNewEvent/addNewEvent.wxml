@@ -1,4 +1,3 @@
-<!--pages/addNewEvent/addNewEvent.wxml-->
 <navigation-cancel Title="取消"></navigation-cancel>
 <view class="container">
   <view class="titleCon">

@@ -128,8 +128,8 @@ Page({
       let num_total = 'todo_today.num_total';
       let num_finished = 'todo_today.num_finished';
       this.setData({
-        [num_total]: res.result.total,
-        [num_finished]: res.result.finished,
+        [num_total]: res.result.total.total,
+        [num_finished]: res.result.finished.total,
       })
       // 设置今日待办统计字体大小
       this.setCircle();

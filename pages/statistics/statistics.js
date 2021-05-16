@@ -35,17 +35,16 @@ Page({
   // 获取用户统计信息
   getUserStatisticInfo: function(){
     // 初始化用户信息
-    let that = this;
+    // let that = this;
     wx.cloud.callFunction({
       name: 'getUserEventInfo',
-      success: function(res){
-        let totalInfo = 'userInfo.createInfo';
-        let finishedInfo = 'userInfo.finishInfo';
-        that.setData({
-          [totalInfo]: res.result[0],
-          [finishedInfo]: res.result[1],
-        })
-      }
+    }).then(res=>{
+      let totalInfo = 'userInfo.createInfo';
+      let finishedInfo = 'userInfo.finishInfo';
+      this.setData({
+        [totalInfo]: res.result[0],
+        [finishedInfo]: res.result[1],
+      })
     })
   },
 
@@ -59,6 +58,10 @@ Page({
     if(num == 0){
       this.setData({
         isCreated: false,
+      })
+    }else{
+      this.setData({
+        isCreated: true,
       })
     }
   },

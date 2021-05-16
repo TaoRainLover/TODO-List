@@ -1,4 +1,4 @@
-/* 对话框区域 */
+/* 重命名对话框区域 */
 .toast{
     width: 100%;
     opacity: 1;
@@ -21,7 +21,7 @@
   margin-top: 60%;
 }
 .toast .showtoast{
-  width: 502rpx;
+  width: 522rpx;
   height: 262rpx;
   background-color: #FFFFFF;
   box-shadow: 0px 0px 198rpx #C6C6C6;
@@ -53,7 +53,7 @@
 }
 .toast .showtoast .operation{
   height: 48rpx;
-  width: 164px;
+  width: 168px;
   font-size: 32rpx;
   display: flex;
   /* justify-content: space-between; */
@@ -64,7 +64,7 @@
   border-right: 2rpx solid rgba(244, 244, 244, 1);
 }
 .toast .operation .confirm{
-  padding-left: 98rpx;
+  padding-left: 94rpx;
 }
 
 .container{

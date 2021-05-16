@@ -6,6 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // operation固定条高度设置
+    viewOpeH:'',
+    // 是否隐藏更多操作界面
+    hiddenOperation: true,
+
     // 添加新的todo内容
     newTodoInfo: '',
     todoContent: '',
@@ -31,21 +36,6 @@ Page({
     groups: [
         { text: '删除任务', type: 'warn', value: "delete" }
     ]
-  },
-  // 更多操作
-  moreOperation:function(){
-    var isHidden = this.data.noOperation;
-    console.log(isHidden);
-    if(isHidden==true){
-      this.setData({
-        noOperation:false,
-      })
-    }
-    else{
-      this.setData({
-        noOperation:true,
-      })
-    }
   },
   // 列表切换
   navigateTo:function(e){
@@ -85,6 +75,108 @@ Page({
       })
     }
   },
+
+  // 这里是更多操作设置
+  // 点击operation按钮
+  clickOperation:function(){
+    let that = this;
+    var ishidden = this.data.hiddenOperation;
+    if(ishidden == true){
+      this.setData({
+        hiddenOperation: false
+      })
+    }else if(ishidden == ''){
+      that.setData({
+        hiddenOperation: true
+      })
+    }
+  },
+  // 隐藏更多操作界面啊
+  hiddenOperation: function(){
+    this.setData({
+      hiddenOperation: true
+    })
+  },
+  // 点击操作区删除按钮 -- 未完成
+  delete: function(){
+    let that = this;
+    console.log("即将清除此列表");
+    let type = 'todo';
+    let listOption;
+    if(this.data.showtoday == false){
+      listOption = 'today';
+    }else if(this.data.showoverdue == false){
+      listOption = 'before';
+    }else if(this.data.showdone == false){
+      listOption = 'finished';
+    }
+    // 弹出确认
+    wx.showModal({
+      title: '你确认要清除这个列表吗',
+      success: function (res) {
+        if (res.confirm) {
+          //点击了确定以后
+          console.log('删除信息','Todo', type, listOption)
+          // 1.提交删除操作
+          wx.cloud.callFunction({
+            name: 'clearLists',
+            data: {
+              className: '待办',
+              type: 'todo',
+              listOption: listOption,
+            }
+          }).then(res => {
+            if(res.result){
+              wx.showToast({
+                title: '清除成功！',
+              })
+              // 关闭操作界面
+              that.hiddenOperation();
+              // 2.刷新页面
+              if(!that.data.showtoday){
+                that.getTodayTodo();
+              }else if(!that.data.showoverdue){
+                that.getBeforeList();
+              }else if(!that.data.showdone){
+                that.getFinishedList();
+              }
+            }else{
+              wx.showToast({
+                title: '网络异常',
+                icon: 'none',
+              })
+              that.hiddenOperation();
+
+            }
+          }).catch(err => {
+            wx.showToast({
+              title: '网络异常',
+              icon: 'none',
+            })
+            that.hiddenOperation();
+
+          })
+          
+        } else {
+          //这里是点击了取消以后 ---> 无操作
+          console.log('清除列表取消！');
+          that.hiddenOperation();
+
+        }
+      }
+    })
+  },
+
+  // 点击操作区重命名按钮
+  rename: function(){
+    wx.showToast({
+      title: '抱歉，此列表为系统创建，不能重命名',
+      icon: 'none',
+      duration: 2000
+    })
+    this.hiddenOperation();
+  },
+
 
   // 获取创建新的待办输入框内容：
   getNewTodoInfo: function(e){
@@ -294,7 +386,8 @@ Page({
   // 监听事项长按：
   longPressItem:function(eve){
     console.log('长按！', eve.currentTarget.id);
-    
+    // 震动
+    // wx.vibrateShort();
     this.setData({
       showActionsheet: true,
       longPressItemid: eve.currentTarget.id,

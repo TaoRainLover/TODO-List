@@ -1,0 +1,7 @@
+<!--components/listOperation.wxml-->
+<!-- <text>components/listOperation.wxml</text> -->
+<!-- 操作部分 -->
+<view class="operationView" style="top: {{viewOpeH}}"  hidden="{{noOperation}}">
+        <view class="rename" bindtap="rename">重命名</view>
+        <view class="delete" bindtap='delete'>删除</view>
+</view>

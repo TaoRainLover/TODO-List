@@ -1,19 +1,38 @@
-<!--pages/remind_doing/remind.wxml-->
 <navigation-back Title="{{title}}"></navigation-back>
-<view class="container" style="height: {{pageH}}">
+<!-- 更多操作部分-list -->
+<view class="operationView" style="top: {{viewOpeH}}"  hidden="{{hiddenOperation}}">
+      <view class="rename" bindtap="rename">重命名</view>
+      <view class="delete" bindtap='delete'>清空列表</view>
+</view>
+<!-- 重命名界面Flag - 此界面不会被显示 -->
+<view class="toast" style="height: {{screenH}}" hidden="{{hiddenRenameToast}}">
+  <view  class="toastBg"></view>
+  <view class="toastCon">
+    <view class="showtoast">
+      <view class="title">重命名：输入修改后的名称</view>
+      <input type="text"  placeholder="最多8字符" maxlength="12" bindinput="getRenameInfo" class="modify" value="{{pageTitle}}"/>
+      <view class='operation'>
+        <view class="cancel" bindtap="cancelRename">取消</view>
+        <view class="confirm" bindtap="confirmRename">确认</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 页面部分 -->
+<view class="container" bindtap="hiddenOperation" style="height: {{pageH}}">
   <view class="contentContainer">
     <view class="title">
       <view class="attribution">
         <text class="doing" id="doing" bindtap="navigateTo" style="{{style_doing}}">进行中</text>
         <text class="complete" id="done" bindtap="navigateTo" style="{{style_done}}">已完成</text>
       </view>
-      <image class="dot" src="../../imgs/icon/dots.png" mode="aspectFit" bindtap="moreOperation"></image>
+      <image class="dot" src="../../imgs/icon/dots.png" mode="aspectFit" catchtap="clickOperation"></image>
     </view>
     <!-- 进行中 -->
     <scroll-view class="tdlist" scroll-y="true" hidden="{{showDoing}}">
       <view class="li" wx:for="{{onlist}}" wx:key="id">
         <input class="input{{item.status}}" confirm-type="done" bindconfirm='updataItemInfo' id="{{index}}" value="{{item.content}}"></input>
-        <view id="{{item.id}}" catchlongpress="longPressItem" bindtap="changeStatus" class="status{{item.status}}" id="{{index}}" mode="aspectFit"></view>
+        <view id="{{item.id}}"   catchlongpress="longPressItem" bindtap="changeStatus" class="status{{item.status}}" id="{{index}}" mode="aspectFit"></view>
       </view>
       <view class="add">
         <input class="addinput" type="text" value="{{newInfo}}" placeholder="点击创建新的提醒" placeholder-style="color: grey" bindconfirm="addNewEvent"  bindinput="getNewEveInfo"/>
@@ -24,13 +43,9 @@
       <!-- 已完成 -->
       <view class="li" wx:for="{{finishedList}}" wx:key="id">
         <input class="input{{item.status}}" confirm-type="done" bindconfirm='updataItemInfo' id="{{index}}"  value="{{item.content}}"></input>
-        <view class="status{{item.status}}" id="{{index}}" bindtap="changeStatus" catchlongpress="longPressItem" mode="aspectFit"></view>
+        <view class="status{{item.status}}" id="{{index}}" bindtap="changeStatus"   catchlongpress="longPressItem" mode="aspectFit"></view>
       </view>
     </scroll-view>
-  </view>
-  <view class="operationView" style="top: {{viewOpeH}}"  hidden="{{noOperation}}">
-    <view class="rename" bindtap="rename">重命名</view>
-    <view class="delete" bindtap='delete'>删除</view>
   </view>
   <!-- 底部菜单栏 -->
   <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" >

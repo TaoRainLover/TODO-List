@@ -1,13 +1,12 @@
-/* pages/addNewEvent/addNewEvent.wxss */
 .container{
-  height: 734rpx;
+  /* height: 734rpx; */
   width: 722rpx;
   margin: 0 auto;
   background: rgba(247, 246, 254,  0.56);
   border-radius: 48rpx;
   font-size: 40rpx;
   box-sizing: border-box;
-  padding: 38rpx 22rpx 0rpx 22rpx;
+  padding: 38rpx 22rpx 22rpx 22rpx;
 }
 .titleCon{
   display: flex;

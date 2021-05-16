@@ -6,12 +6,21 @@ Page({
    * 页面的初始数据
    */
   data: {
+    screenH: '',
+    title: '',
+    type: '',
+    // 是否隐藏更多操作界面
+    hiddenOperation: true,
+    // 重命名输入框内容
+    renameContent: '',
+    // 是否隐藏重命名界面
+    hiddenRenameToast: true,
+    // 重命名修改名称
+    reNameInfo: '',
+
     // 添加新的todo内容
     newInfo: '',
     inputContent: '',
-
-    title: '',
-    type: '',
     onlist: [],
     finishedList:[],
     showDoing:false,
@@ -24,24 +33,10 @@ Page({
     // 底部菜单栏设置
     showActionsheet: false,
     groups: [
-        // { text: '修改内容', value: "alter" },
-        // { text: '完成任务', value: "finish" },
-        { text: '删除任务', type: 'warn', value: "delete" }
+      { text: '删除任务', type: 'warn', value: "delete" }
     ]
   },
-  moreOperation:function(){
-    var isHidden = this.data.noOperation;
-    if(isHidden==true){
-      this.setData({
-        noOperation:false,
-      })
-    }
-    else{
-      this.setData({
-        noOperation:true,
-      })
-    }
-  },
+
   // 进行项和完成项切换
   navigateTo:function(e){
     let type = e.target.id;
@@ -61,6 +56,188 @@ Page({
       showDoing:true,
       style_doing:"color:rgba(213, 213, 213, 1)",
       style_done:"font-weight: bolder;",
+      })
+    }
+  },
+
+  // 这里是更多操作设置
+  // 点击operation按钮
+  clickOperation:function(){
+    let that = this;
+    var ishidden = this.data.hiddenOperation;
+    if(ishidden == true){
+      this.setData({
+        hiddenOperation: false
+      })
+    }else if(ishidden == ''){
+      that.setData({
+        hiddenOperation: true
+      })
+    }
+  },
+  // 隐藏更多操作界面啊
+  hiddenOperation: function(){
+    this.setData({
+      hiddenOperation: true
+    })
+  },
+  // 点击操作区删除按钮
+  delete: function(){
+    let that = this;
+    let className = this.data.title;
+    let type = this.data.type;
+    let listOption;
+    if(!that.data.showDoing){
+      listOption = 'online'
+    }else if(!that.data.showDone){
+      listOption = 'finished'
+    }
+    console.log('你将清除的列表是',className, type, listOption);
+
+    // 弹出确认
+    wx.showModal({
+      title: '你确认要清除这个列表吗',
+      success: function (res) {
+        if (res.confirm) {
+          //点击了确定以后
+          console.log('你选择了删除')
+          // 1.提交删除操作
+          wx.cloud.callFunction({
+            name: 'clearLists',
+            data: {
+              className: className,
+              type: type,
+              listOption: listOption
+            }
+          }).then(res => {
+            if(res.result){
+              wx.showToast({
+                title: '清除成功！',
+              })
+              // 2.刷新页面
+              if(!that.data.showDoing){
+                that.getOnLineList();
+              }else if(!that.data.showDone){
+                that.getFinishedList();
+              }
+            }else{
+              wx.showToast({
+                title: '网络异常',
+                icon: 'none',
+              })
+            }
+          }).catch(err => {
+            wx.showToast({
+              title: '网络异常',
+              icon: 'none',
+            })
+          })
+          
+        } else {
+          //这里是点击了取消以后 ---> 无操作
+          console.log('清除列表取消！');
+        }
+      }
+    })
+  },
+  // 点击操作区重命名按钮
+  rename: function(){
+    // 判断该页面是否为自定义列表，否则不能进行重命名
+    let type = this.data.type;
+    if(type == 'reminder'){
+      wx.showToast({
+        title: '抱歉，此列表为系统创建，不能重命名',
+        icon: 'none',
+        duration: 2000
+      })
+      this.hiddenOperation();
+    }else{
+      // 1.显示修改框
+      this.setData({
+        hiddenRenameToast: false
+      })
+      this.hiddenOperation();
+      
+    }
+  },
+  // 监听重命名输入框
+  getRenameInfo: function(e){
+    console.log(e.detail.value);
+    this.setData({
+      reNameInfo: e.detail.value,
+    })
+  },
+  // 重命名取消
+  cancelRename: function(){
+    this.setData({
+      hiddenRenameToast: true
+    })
+  },
+  // 重命名确认
+  confirmRename: function(){
+    // 1.获取重命名信息：
+    let that = this;
+    let className = this.data.title;
+    let type = this.data.type;
+    let listName = this.data.reNameInfo;
+    if(listName == ''){
+      wx.showToast({
+        title: '列表名为空',
+        icon: 'none',
+      })
+    }else if(listName == className){
+      wx.showToast({
+        title: '列表名未改动',
+        icon: 'none',
+      })
+    }else{
+      console.log('修改前',className, '修改后',listName);
+      wx.cloud.callFunction({
+        name: 'listRename',
+        data: {
+        className: className,
+        type: type,
+        listName: listName
+        }
+      }).then(res => {
+        if(res.result){
+          // 1.弹窗提示
+          wx.showToast({
+            title: '修改成功',
+          })
+
+          // 2.修改标题
+          that.setData({
+            title: listName,
+          })
+          // 隐藏操作界面
+          that.hiddenOperation();
+          that.setData({
+            hiddenRenameToast: true,
+          })
+        }else{
+          wx.showToast({
+            title: '列表名已经存在！',
+            icon: 'none',
+            duration: 2000
+          })
+          that.setData({
+            hiddenRenameToast: true,
+          })
+          // 3.隐藏操作界面
+          that.hiddenOperation();
+      }
+      }).catch(err => {
+        wx.showToast({
+        title: '网络异常！',
+        icon: 'none',
+        duration: 2000
+        })
+        that.setData({
+          hiddenRenameToast: true,
+        })
+        // 3.隐藏操作界面
+        that.hiddenOperation();
       })
     }
   },

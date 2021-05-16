@@ -1,9 +1,5 @@
-// pages/createNewClass/createNewClass.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     // 输入标题，15字符内
     newListTitle: '',
