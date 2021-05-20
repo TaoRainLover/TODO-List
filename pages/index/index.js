@@ -74,7 +74,7 @@ Page({
     // 2.通过id到userLists寻找对应项的type值和listName值，
     let type = this.data.userLists[id].listType;
     let listName = this.data.userLists[id].listName;
-    console.log('你所点击的项目是',type, listName);
+    // console.log('你所点击的项目是',type, listName);
     let targetUrl = '';
     if(type == 'todo'){
       targetUrl = '../todos/todos?name=待办&type=todo';

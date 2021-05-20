@@ -39,7 +39,6 @@ Page({
   },
   // 列表切换
   navigateTo:function(e){
-    // console.log(e);
     let type = e.target.id;
     if(type=="today"){
       this.getTodayTodo();
@@ -304,7 +303,7 @@ Page({
         [itemStatus]: (!item.status)
       })
     }
-    console.log(item._id, item.status, item.content);
+    // console.log(item._id, item.status, item.content);
     // 调用云函数修改数据库数据
     wx.cloud.callFunction({
       name: 'updateStatus',
@@ -315,23 +314,28 @@ Page({
         status: (!item.status)
       }
     }).then(res => {
-      console.log(res);
+      // console.log(res);
       if(res.result == true){
-        console.log('修改状态成功！')
+        // console.log('修改状态成功！')
         // 进行列表刷新
         if(this.data.showtoday == false){
-          this.getTodayTodo();
+          // this.getTodayTodo();
         }else if(this.data.showoverdue == false){
-          this.getBeforeList();
+          // this.getBeforeList();
         }else if(this.data.showdone == false){
           this.getFinishedList();
         }
       }else{
         wx.showToast({
           title: '网络错误，请稍后再试',
+          icon: 'loading',
         })
       }
-      
+    }).catch(err => {
+      wx.showToast({
+        title: '网络错误，请稍后重试！',
+        icon: 'loading',
+      })
     })
   },
   // 键盘点击完成-->提交
@@ -364,7 +368,7 @@ Page({
         [itemContent]: content,
       })
     }
-    console.log('提交',id, content);
+    // console.log('提交',id, content);
     // 数据库更新
     wx.cloud.callFunction({
       name: 'updateEventContent',

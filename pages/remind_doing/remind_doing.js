@@ -344,6 +344,8 @@ Page({
       item = this.data.onlist[index];
       status = item.status;
       let itemStatus = 'onlist['+index+'].status';
+      // 
+
       this.setData({
         [itemStatus]: (!status),
       })
@@ -374,7 +376,6 @@ Page({
       }
     })
   },
-
   // 键盘点击完成-->提交
   updataItemInfo: function(e){
     let index = e.currentTarget.id;

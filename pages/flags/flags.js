@@ -34,6 +34,8 @@ Page({
     wx.cloud.callFunction({
       name: 'getFlagList'
     }).then(res => {
+      console.log(res.result);
+      // if(res.result.length == 0)
       let flagList = res.result.data;
       for(let i = 0; i < flagList.length; i++){
         flagList[i].time = funTools.serveDateToLocalDate(flagList[i].time);
@@ -304,7 +306,6 @@ Page({
   // flagOn <--->  flagDown相互切换
   clickFlag: function(e){
     // 1.获取点击项的id
-    // console.log("旗帜被点击了", e.target.id);
     let id = e.target.id;
     // 2.从flagList中匹配flag状态。
     let item = this.data.flagList[id];
@@ -325,16 +326,18 @@ Page({
       }
     }).then(res => {
       if(res.result == true){
-        // 重新获取数据
-        // console.log("更改成功");
-        // this.getFlagList();
       }else{
         wx.showToast({
           title: '网络错误，请稍后重试！',
+          icon: 'loading'
         })
       }
+    }).catch(err => {
+      wx.showToast({
+        title: '网络错误，请稍后重试！',
+        icon: 'loading'
+      })
     })
-    // 4.更新数据
   },
   
 
