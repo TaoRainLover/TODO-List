@@ -13,7 +13,10 @@ Page({
     // 页面高度，控制滚动列表在页面底
     pageH: app.globalData.pageHeight,
     // 用户列表 ， 页面加载函数中初始化, id使用数据库自动创建id
-    userLists: [],
+    userLists: [{listColor: "rgba(0,111,255,1)", listName: "待办", listType: "todo", numItems: 0},
+    {listColor: "rgba(141, 10, 255, 1)", listName: "提醒", listType: "reminder", numItems: 0},
+    {listColor: "rgba(255, 173, 10, 1)", listName: "想法", listType: "idea", numItems: 0},
+    {listColor: "rgba(255, 80, 80, 1)", listName: "Flag", listType: "flag", numItems: 0}],
     // 今日待办统计
     todo_today:{
       num_finished: 0,
@@ -228,14 +231,14 @@ Page({
     .catch(err => {
       console.log('登陆失败！', err);
     })
-
+    this.getUserLists();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getUserLists();
   },
 
   /**
@@ -246,8 +249,10 @@ Page({
     this.getUserLists();
     // 获取用户今日待办信息
     this.statisticsOfTodaysItems();
+    // 设置本地缓存
     
   },
+
 
   /**
    * 生命周期函数--监听页面隐藏
