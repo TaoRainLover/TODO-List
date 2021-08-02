@@ -7,12 +7,16 @@
 
 ### 首页
 <img src="https://github.com/TaoRainLover/wechat_todoList_imgs/blob/master/index.PNG" width="250px">
+
 ### 个人统计页面
 <img src="https://github.com/TaoRainLover/wechat_todoList_imgs/blob/master/person_statistical.PNG" width="250px">
+
 ### 快速创建事项页面
 <img src="https://github.com/TaoRainLover/wechat_todoList_imgs/blob/master/add_item.PNG" width="250px">
+
 ### 创建新的分类页面
 <img src="https://github.com/TaoRainLover/wechat_todoList_imgs/blob/master/add_newClass.PNG" width="250px">
+
 ### 代办详情页
 <img src="https://github.com/TaoRainLover/wechat_todoList_imgs/blob/master/todo_page.PNG" width="250px">
 <img src="https://github.com/TaoRainLover/wechat_todoList_imgs/blob/master/todo_before.PNG" width="250px">
